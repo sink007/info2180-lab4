@@ -1,5 +1,6 @@
 <?php
 header("Access-Control-Allow-Origin: *");
+
 $superheroes = [
   [
       "id" => 1,
@@ -63,10 +64,33 @@ $superheroes = [
   ], 
 ];
 
+$query = isset($_GET['query']) ? $_GET['query'] : '';
+
+if ($query == '') {
+        echo '<ul>'; 
+        foreach ($superheroes as $superhero): 
+            echo '<li>'.$superhero['alias'].'</li>';
+        endforeach; 
+        echo '</ul>';
+}
+
+else {
+    $filter = array_filter($superheroes, function($hero) use ($query) {
+        return strcasecmp($hero['name'], $query) === 0 || strcasecmp($hero['alias'], $query) === 0;
+    });
+    
+    if ($filter){
+        foreach ($filter as $hero){
+            echo '<h3>'.$hero['alias'].'</h3>';
+            echo '<h4>'.$hero['name'].'</h4>';
+            echo '<p>'.$hero['biography'].'</p>';
+        }
+    }
+
+    else{
+        echo "Superhero not found";
+    }
+    
+}
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>

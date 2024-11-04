@@ -1,11 +1,21 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="styles.css"/>
-<script src="app.js"></script>
-<h1> Avengers Character Search</h1>
-<div>
-    <button id="search">
-        Search
-    </button>
-</div>
-<ul id="output"></ul>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.1.7/purify.min.js"></script> 
+    <script src="app.js"></script>
+</head>
+<body>
+    <h1>Avengers Character Search</h1>
+    <div>
+        <button id="search">Search</button>
+        <input type="text" id="field" placeholder="Enter character name" />
+    </div>
+    <div style="margin-top: 50px;">
+        <h2>Result</h2>
+    </div>
+    <div id="result"></div>
+</body>
 </html>
